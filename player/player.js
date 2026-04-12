@@ -2,8 +2,6 @@
  * 11) PLAYER MOVEMENT + COLLISION
  ************************************************************/
 function updatePlayer() {
-  if (endFreezeEffect.active) return;
-
   let dx = 0;
   let dy = 0;
 
@@ -71,6 +69,8 @@ function applyDamage(amount, source = "") {
     damageTextTimer = 40;
 
     startFreezeEffect();
+    FreezeEffect.active = true;
+    FreezeEffect.activeTimer = 60;
 
     if (
       sndDamage &&
