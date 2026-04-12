@@ -110,13 +110,15 @@ function checkMonsterCollisions() {
  * 13) MONSTER ANIMATION UPDATE
  ************************************************************/
 function updateMonsterAnimation() {
+  const anim = getMonsterAnimSettings();
+
   monsterFrameCounter++;
 
   if (monsterFrameCounter >= monsterFrameDelay) {
     monsterFrameCounter = 0;
     monsterFrameIndex++;
 
-    if (monsterFrameIndex >= MONSTER_FRAMES) {
+    if (monsterFrameIndex >= anim.frames) {
       monsterFrameIndex = 0;
     }
   }

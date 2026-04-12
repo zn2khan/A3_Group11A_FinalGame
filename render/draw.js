@@ -92,26 +92,29 @@ function drawPlayer() {
 }
 
 function drawEnemies() {
-  if (!monsterSheet) {
+  const activeMonsterSheet = getMonsterSheetForCurrentLevel();
+  const anim = getMonsterAnimSettings();
+
+  if (!activeMonsterSheet) {
     noStroke();
     fill(255, 200, 0);
     for (const e of enemies) circle(e.x, e.y, e.r * 2);
     return;
   }
 
-  const sx = monsterFrameIndex * MONSTER_FRAME_W;
+  const sx = monsterFrameIndex * anim.frameW;
   const sy = 0;
-  const sw = MONSTER_FRAME_W;
-  const sh = MONSTER_FRAME_H;
+  const sw = anim.frameW;
+  const sh = anim.frameH;
 
-  const dw = MONSTER_FRAME_W * MONSTER_SCALE;
-  const dh = MONSTER_FRAME_H * MONSTER_SCALE;
+  const dw = anim.frameW * MONSTER_SCALE;
+  const dh = anim.frameH * MONSTER_SCALE;
 
   for (const e of enemies) {
     const dx = floor(e.x - dw / 2);
     const dy = floor(e.y - dh / 2);
 
-    image(monsterSheet, dx, dy, dw, dh, sx, sy, sw, sh);
+    image(activeMonsterSheet, dx, dy, dw, dh, sx, sy, sw, sh);
   }
 }
 

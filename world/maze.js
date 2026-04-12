@@ -338,14 +338,16 @@ function drawMaze() {
 }
 
 function drawPipeWall(wall) {
-  if (!pipeImg) {
+  const activePipeImg = getPipeImageForCurrentLevel();
+
+  if (!activePipeImg) {
     noStroke();
     fill(200, 80, 80);
     rect(wall.x, wall.y, wall.w, wall.h);
     return;
   }
 
-  const srcTile = pipeImg.width;
+  const srcTile = activePipeImg.width;
 
   if (wall.h > wall.w) {
     const tileSize = wall.w;
@@ -354,10 +356,20 @@ function drawPipeWall(wall) {
       const remaining = wall.y + wall.h - y;
       const drawH = min(tileSize, remaining);
 
-      const syMax = max(1, pipeImg.height - srcTile);
+      const syMax = max(1, activePipeImg.height - srcTile);
       const sy = (i * floor(srcTile * 0.8)) % syMax;
 
-      image(pipeImg, wall.x, y, wall.w, drawH, 0, sy, pipeImg.width, srcTile);
+      image(
+        activePipeImg,
+        wall.x,
+        y,
+        wall.w,
+        drawH,
+        0,
+        sy,
+        activePipeImg.width,
+        srcTile
+      );
     }
   } else {
     const tileSize = wall.h;
@@ -366,7 +378,7 @@ function drawPipeWall(wall) {
       const remaining = wall.x + wall.w - x;
       const drawW = min(tileSize, remaining);
 
-      const syMax = max(1, pipeImg.height - srcTile);
+      const syMax = max(1, activePipeImg.height - srcTile);
       const sy = (i * floor(srcTile * 0.8)) % syMax;
 
       push();
@@ -374,7 +386,17 @@ function drawPipeWall(wall) {
       rotate(HALF_PI);
       imageMode(CENTER);
 
-      image(pipeImg, 0, 0, wall.h, drawW, 0, sy, pipeImg.width, srcTile);
+      image(
+        activePipeImg,
+        0,
+        0,
+        wall.h,
+        drawW,
+        0,
+        sy,
+        activePipeImg.width,
+        srcTile
+      );
 
       imageMode(CORNER);
       pop();

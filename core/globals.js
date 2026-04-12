@@ -44,6 +44,11 @@ let keySheet;
 let burstPipeSheet;
 let pipeBurstImg;
 
+// Level-specific images
+let pipeImgLvl2;
+let pipeImgLvl3;
+let monsterSheetLvl2;
+let monsterSheetLvl3;
 
 const PIPE_BURST_FRAME_W = 8;
 const PIPE_BURST_FRAME_H = 21;
@@ -71,13 +76,34 @@ let cutsceneDuration = 6200;
 let cutsceneStartTime = 0;
 
 // Monster animation settings
-const MONSTER_FRAME_W = 29;
-const MONSTER_FRAME_H = 29;
-const MONSTER_FRAMES = 6;
-const MONSTER_SCALE = 2;
+const MONSTER_SCALE = 3;
 let monsterFrameIndex = 0;
 let monsterFrameCounter = 0;
 let monsterFrameDelay = 10;
+
+function getMonsterAnimSettings() {
+  if (currentLevel === 2) {
+    return {
+      frameW: 32,
+      frameH: 28,
+      frames: 6,
+    };
+  }
+
+  if (currentLevel === 3) {
+    return {
+      frameW: 22,
+      frameH: 37,
+      frames: 5,
+    };
+  }
+
+  return {
+    frameW: 29,
+    frameH: 29,
+    frames: 6,
+  };
+}
 
 // Key animation settings
 const KEY_COLS = 4;
@@ -198,3 +224,15 @@ const LEVEL_SETTINGS = {
     gasDamageInterval: 18,
   },
 };
+
+function getPipeImageForCurrentLevel() {
+  if (currentLevel === 2 && pipeImgLvl2) return pipeImgLvl2;
+  if (currentLevel === 3 && pipeImgLvl3) return pipeImgLvl3;
+  return pipeImg;
+}
+
+function getMonsterSheetForCurrentLevel() {
+  if (currentLevel === 2 && monsterSheetLvl2) return monsterSheetLvl2;
+  if (currentLevel === 3 && monsterSheetLvl3) return monsterSheetLvl3;
+  return monsterSheet;
+}

@@ -22,6 +22,8 @@ function preload() {
   startBg = loadImage("assets/images/GBDA302_Background.png");
   gameBg = loadImage("assets/images/background.png");
   pipeImg = loadImage("assets/images/pipe.png");
+  pipeImgLvl2 = loadImage("assets/images/pipelvl2.png");
+  pipeImgLvl3 = loadImage("assets/images/pipelvl3.png");
   doorImg = loadImage("assets/images/door.png");
   burstPipeSheet = loadImage("assets/images/pipes-bursting-spritesheet.png");
   pipeBurstImg = loadImage("assets/images/pipe_burst.png");
@@ -32,6 +34,8 @@ function preload() {
 
   // Enemy + cutscene
   monsterSheet = loadImage("assets/images/monster.png");
+  monsterSheetLvl2 = loadImage("assets/images/monsterlvl3.png");
+  monsterSheetLvl3 = loadImage("assets/images/monsterlvl2.png");
   cutsceneGif = loadImage("assets/images/cutscene.gif");
 
   // Audio
