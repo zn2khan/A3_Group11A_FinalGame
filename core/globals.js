@@ -35,6 +35,8 @@ let sprites = {};
 // Images
 let startBg;
 let gameBg;
+let gameBgLvl2;
+let gameBgLvl3;
 let pipeImg;
 let monsterSheet;
 let cutsceneGif;
@@ -80,30 +82,6 @@ const MONSTER_SCALE = 3;
 let monsterFrameIndex = 0;
 let monsterFrameCounter = 0;
 let monsterFrameDelay = 10;
-
-function getMonsterAnimSettings() {
-  if (currentLevel === 2) {
-    return {
-      frameW: 32,
-      frameH: 28,
-      frames: 6,
-    };
-  }
-
-  if (currentLevel === 3) {
-    return {
-      frameW: 22,
-      frameH: 37,
-      frames: 5,
-    };
-  }
-
-  return {
-    frameW: 29,
-    frameH: 29,
-    frames: 6,
-  };
-}
 
 // Key animation settings
 const KEY_COLS = 4;
@@ -235,4 +213,34 @@ function getMonsterSheetForCurrentLevel() {
   if (currentLevel === 2 && monsterSheetLvl2) return monsterSheetLvl2;
   if (currentLevel === 3 && monsterSheetLvl3) return monsterSheetLvl3;
   return monsterSheet;
+}
+
+function getBackgroundImageForCurrentLevel() {
+  if (currentLevel === 2 && gameBgLvl2) return gameBgLvl2;
+  if (currentLevel === 3 && gameBgLvl3) return gameBgLvl3;
+  return gameBg;
+}
+
+function getMonsterAnimSettings() {
+  if (currentLevel === 2) {
+    return {
+      frameW: 32,
+      frameH: 28,
+      frames: 6,
+    };
+  }
+
+  if (currentLevel === 3) {
+    return {
+      frameW: 22,
+      frameH: 37,
+      frames: 4,
+    };
+  }
+
+  return {
+    frameW: 29,
+    frameH: 29,
+    frames: 6,
+  };
 }

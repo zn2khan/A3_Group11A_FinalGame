@@ -21,9 +21,13 @@ function preload() {
   // Screen / environment images
   startBg = loadImage("assets/images/GBDA302_Background.png");
   gameBg = loadImage("assets/images/background.png");
+  gameBgLvl2 = loadImage("assets/images/backgroundlvl2.png");
+  gameBgLvl3 = loadImage("assets/images/backgroundlvl3.png");
+
   pipeImg = loadImage("assets/images/pipe.png");
   pipeImgLvl2 = loadImage("assets/images/pipelvl2.png");
   pipeImgLvl3 = loadImage("assets/images/pipelvl3.png");
+
   doorImg = loadImage("assets/images/door.png");
   burstPipeSheet = loadImage("assets/images/pipes-bursting-spritesheet.png");
   pipeBurstImg = loadImage("assets/images/pipe_burst.png");

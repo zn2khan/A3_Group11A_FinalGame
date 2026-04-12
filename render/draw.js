@@ -192,8 +192,10 @@ function advanceLevel() {
  * 19) WORLD / GOAL / DRAWING
  ************************************************************/
 function drawWorldBackground() {
-  if (gameBg) {
-    image(gameBg, 0, 0, WORLD_W, WORLD_H);
+  const activeBg = getBackgroundImageForCurrentLevel();
+
+  if (activeBg) {
+    image(activeBg, 0, 0, WORLD_W, WORLD_H);
   } else {
     background(40, 25, 20);
   }
