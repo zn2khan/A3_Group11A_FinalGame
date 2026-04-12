@@ -2,11 +2,6 @@
  * 11) PLAYER MOVEMENT + COLLISION
  ************************************************************/
 function updatePlayer() {
-  if (freezeEffect.active) {
-    player.moving = false;
-    checkMonsterCollisions();
-    return;
-  }
   let dx = 0;
   let dy = 0;
 
@@ -72,6 +67,10 @@ function applyDamage(amount, source = "") {
     damageCooldown = 30;
     damageText = "-" + amount + " health!" + source;
     damageTextTimer = 40;
+
+    startFreezeEffect();
+    FreezeEffect.active = true;
+    FreezeEffect.activeTimer = 60;
 
     if (
       sndDamage &&

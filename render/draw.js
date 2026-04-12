@@ -27,7 +27,7 @@ function drawGame() {
       goal.h,
       player.x,
       player.y,
-      player.r
+      player.r,
     )
   ) {
     if (hasAllKeys()) {
@@ -67,8 +67,7 @@ function drawGame() {
   drawHealthBar();
 
   if (freezeEffect.active) {
-    const pulseBlur =
-      freezeEffect.blurAmount + 0.75 * sin(frameCount * 0.18);
+    const pulseBlur = freezeEffect.blurAmount + 0.75 * sin(frameCount * 0.18);
 
     filter(BLUR, max(1, pulseBlur));
     drawFreezeOverlay();
@@ -139,13 +138,6 @@ function updateFreezeEffect() {
     if (freezeEffect.activeTimer <= 0) {
       endFreezeEffect();
     }
-    return;
-  }
-
-  freezeEffect.cycleTimer++;
-
-  if (freezeEffect.cycleTimer >= freezeEffect.triggerAfter) {
-    startFreezeEffect();
   }
 }
 
@@ -162,7 +154,6 @@ function startFreezeEffect() {
 function endFreezeEffect() {
   freezeEffect.active = false;
   freezeEffect.activeTimer = 0;
-  freezeEffect.cycleTimer = 0;
 
   player.frameIndex = 0;
   player.frameCounter = 0;
