@@ -69,8 +69,8 @@ function applyDamage(amount, source = "") {
     damageTextTimer = 40;
 
     startFreezeEffect();
-    FreezeEffect.active = true;
-    FreezeEffect.activeTimer = 60;
+    freezeEffect.active = true;
+    freezeEffect.activeTimer = 60;
 
     if (
       sndDamage &&
