@@ -9,7 +9,9 @@ function drawGame() {
   updateCamera();
   updateEnemies();
   ensureKeysForCurrentLevel();
+  ensureMasksForCurrentLevel();
   handleKeyPickup();
+  handleMaskPickup();
   updateWallVents();
   handleWallVentDamage();
   updateFootstepSound();
@@ -47,6 +49,7 @@ function drawGame() {
   drawGoal();
   drawMaze();
   drawKeys();
+  drawMasks();
   drawEnemies();
   drawPlayer();
 

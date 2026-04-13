@@ -10,6 +10,7 @@ function buildMaze() {
   walls = [];
   wallVents = [];
   gasHazards = [];
+  masks = [];
 
   // Outer border for all levels
   walls.push({ x: 0, y: 0, w: WORLD_W, h: 30 });
@@ -29,6 +30,7 @@ function buildMaze() {
   }
 
   buildWallVents();
+  masksBuiltForLevel = -1;
 }
 
 function buildLevel1Maze() {
@@ -559,4 +561,132 @@ function drawKeyUI() {
   textFont("monospace");
   text("Keys: " + collectedKeys + "/" + KEYS_PER_LEVEL, 10, 74);
   pop();
+}
+
+/************************************************************
+ * MASKS
+ ************************************************************/
+function ensureMasksForCurrentLevel() {
+  if (masksBuiltForLevel === currentLevel) return;
+  if (walls.length === 0) return;
+
+  buildMasks();
+  masksBuiltForLevel = currentLevel;
+}
+
+function buildMasks() {
+  masks = [];
+
+  const maskCount = floor(random(MASK_MIN_PER_LEVEL, MASK_MAX_PER_LEVEL + 1));
+
+  for (let i = 0; i < maskCount; i++) {
+    const mask = createRandomMask();
+    if (mask) {
+      masks.push(mask);
+    }
+  }
+}
+
+function createRandomMask() {
+  const maskR = 22;
+  const padding = 80;
+
+  for (let tries = 0; tries < 600; tries++) {
+    const x = random(padding, WORLD_W - padding);
+    const y = random(padding, WORLD_H - padding);
+
+    if (isValidMaskSpot(x, y, maskR)) {
+      return {
+        x,
+        y,
+        r: maskR,
+        collected: false,
+      };
+    }
+  }
+
+  console.log("Could not place mask safely on this level");
+  return null;
+}
+
+function isValidMaskSpot(x, y, r) {
+  if (circleHitsAnyWall(x, y, r + 10)) return false;
+
+  for (const v of wallVents) {
+    const hit = getWallVentHitbox({
+      ...v,
+      active: true,
+      burstLength: VENT_MAX_LENGTH,
+    });
+
+    if (circleRectCollision(x, y, r + 14, hit.x, hit.y, hit.w, hit.h)) {
+      return false;
+    }
+  }
+
+  if (goal && circleRectCollision(x, y, r + 35, goal.x, goal.y, goal.w, goal.h)) {
+    return false;
+  }
+
+  if (player && dist(x, y, player.x, player.y) < 160) {
+    return false;
+  }
+
+  for (const key of keys) {
+    if (dist(x, y, key.x, key.y) < r + key.r + 40) {
+      return false;
+    }
+  }
+
+  for (const otherMask of masks) {
+    if (dist(x, y, otherMask.x, otherMask.y) < r + otherMask.r + 40) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function drawMasks() {
+  for (const mask of masks) {
+    if (!mask.collected) {
+      drawMask(mask);
+    }
+  }
+}
+
+function drawMask(mask) {
+  if (!maskSheet) {
+    push();
+    noStroke();
+    fill(180, 220, 255);
+    circle(mask.x, mask.y, mask.r * 2);
+    pop();
+    return;
+  }
+
+  const frameW = maskSheet.width / MASK_FRAME_COUNT;
+  const frameH = maskSheet.height;
+  const frameIndex = floor(frameCount / MASK_FRAME_DELAY) % MASK_FRAME_COUNT;
+  const sx = frameIndex * frameW;
+  const sy = 0;
+  const drawW = 80;
+  const drawH = 80;
+
+  push();
+  imageMode(CENTER);
+  image(maskSheet, mask.x, mask.y, drawW, drawH, sx, sy, frameW, frameH);
+  imageMode(CORNER);
+  pop();
+}
+
+function handleMaskPickup() {
+  for (const mask of masks) {
+    if (mask.collected) continue;
+
+    if (dist(player.x, player.y, mask.x, mask.y) < player.r + mask.r + 4) {
+      mask.collected = true;
+      activateMaskImmunity();
+    }
+  }
 }

@@ -62,6 +62,8 @@ function updatePlayer() {
  * 10) DAMAGE HELPER
  ************************************************************/
 function applyDamage(amount, source = "") {
+  if (isPlayerImmune()) return;
+
   if (damageCooldown <= 0) {
     health = max(0, health - amount);
     damageCooldown = 30;

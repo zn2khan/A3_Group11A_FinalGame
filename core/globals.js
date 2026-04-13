@@ -20,6 +20,7 @@ let endSoundType = "";
 let lastMonsterSoundTime = -9999;
 let monsterSoundTimeout = null;
 const MONSTER_SOUND_TIMEOUT_MS = 4000;
+
 // World settings
 let VIEW_W;
 let VIEW_H;
@@ -46,6 +47,7 @@ let gasGif;
 let keySheet;
 let burstPipeSheet;
 let pipeBurstImg;
+let maskSheet;
 
 // Level-specific images
 let pipeImgLvl2;
@@ -59,6 +61,15 @@ const PIPE_BURST_FRAME_W = 8;
 const PIPE_BURST_FRAME_H = 21;
 const PIPE_BURST_FRAMES = 12;
 const PIPE_BURST_FRAME_DELAY = 16;
+
+// Mask settings
+let masks = [];
+let masksBuiltForLevel = -1;
+const MASK_MIN_PER_LEVEL = 1;
+const MASK_MAX_PER_LEVEL = 3;
+const MASK_IMMUNITY_MS = 10000;
+const MASK_FRAME_COUNT = 4;
+const MASK_FRAME_DELAY = 10;
 
 // Sounds
 let sndBackground;
@@ -122,6 +133,9 @@ let player = {
   frameCounter: 0,
   currentAnimName: "down_idle",
 };
+
+// Immunity
+let immuneUntil = 0;
 
 // Camera
 let cam = { x: 0, y: 0 };
@@ -263,4 +277,18 @@ function getMonsterAnimSettings() {
     frameH: 29,
     frames: 6,
   };
+}
+
+function isPlayerImmune() {
+  return millis() < immuneUntil;
+}
+
+function getImmuneTimeLeftSeconds() {
+  return max(0, (immuneUntil - millis()) / 1000);
+}
+
+function activateMaskImmunity() {
+  immuneUntil = millis() + MASK_IMMUNITY_MS;
+  damageText = "You are immune for 10 seconds!";
+  damageTextTimer = 90;
 }

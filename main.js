@@ -34,6 +34,7 @@ function preload() {
   pipeBurstImgLvl2 = loadImage("assets/images/pipe_burst_lvl2.png");
   pipeBurstImgLvl3 = loadImage("assets/images/pipe_burst_lvl3.png");
   keySheet = loadImage("assets/images/key_spritesheet.png");
+  maskSheet = loadImage("assets/images/mask_spritesheet.png");
 
   // Gas currently unused
   gasGif = null;
