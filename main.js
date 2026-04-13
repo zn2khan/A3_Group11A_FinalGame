@@ -103,6 +103,12 @@ function draw() {
   if (damageCooldown > 0) {
     damageCooldown--;
   }
+
+  if (!gameEnded && scene === SCENES.GAME && gameStartTime !== 0) {
+    currentTime = (millis() - gameStartTime) / 1000;
+  } else if (gameStartTime === 0) {
+    currentTime = 0;
+  }
 }
 
 /************************************************************
@@ -119,6 +125,9 @@ function keyPressed() {
     if (key === "g" || key === "G") scene = SCENES.GAME;
   } else if (scene === SCENES.CUTSCENE) {
     if (key === " " || keyCode === 32) {
+      if (gameStartTime === 0) {
+        gameStartTime = millis();
+      }
       scene = SCENES.GAME;
     }
   } else if (scene === SCENES.GAME) {

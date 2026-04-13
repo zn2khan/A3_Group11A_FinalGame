@@ -27,11 +27,10 @@ function drawGame() {
       goal.h,
       player.x,
       player.y,
-      player.r,
+      player.r
     )
   ) {
     if (hasAllKeys()) {
-      finalTime = (millis() - levelStartTime) / 1000;
       advanceLevel();
       return;
     } else {

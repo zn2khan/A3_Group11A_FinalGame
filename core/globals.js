@@ -169,10 +169,10 @@ let emptyHeartImg;
 let wallDamage = 1;
 
 // Timer
-let levelStartTime = 0;
-let levelEndTime = 0;
+let gameStartTime = 0;
 let currentTime = 0;
 let finalTime = 0;
+let gameEnded = false;
 
 // High score
 let bestTime = null;
