@@ -126,11 +126,21 @@ function drawCutscene() {
  * 8) END SCREEN
  ************************************************************/
 function drawEnd() {
-  if (endSoundType === "win" && winBg) {
+  if (gameResult === "win" && winBg) {
     image(winBg, 0, 0, width, height);
-  } else if (endSoundType === "lose" && looseBg) {
+  } else if (gameResult === "lose" && looseBg) {
     image(looseBg, 0, 0, width, height);
   } else {
     background(0);
   }
+
+  fill(0, 0, 0, 120);
+  rect(0, 0, width, height);
+
+  fill(255);
+  textAlign(CENTER, CENTER);
+  textFont("monospace");
+
+  textSize(28);
+  text("Time: " + formatTime(finalTime), width / 2, height / 2);
 }

@@ -229,8 +229,8 @@ function drawPixelBox(x, y, w, h) {
 function triggerGameOver() {
   gameEnded = true;
   finalTime = currentTime;
-  endSoundType = "lose";
-  endMessage = "GAME OVER";
+
+  gameResult = "lose";
 
   scene = SCENES.END;
 }
@@ -238,12 +238,8 @@ function triggerGameOver() {
 function triggerVictory() {
   gameEnded = true;
   finalTime = currentTime;
-  endSoundType = "win";
-  endMessage = "YOU ESCAPED!";
 
-  if (bestTime === null || finalTime < bestTime) {
-    bestTime = finalTime;
-  }
+  gameResult = "win";
 
   scene = SCENES.END;
 }

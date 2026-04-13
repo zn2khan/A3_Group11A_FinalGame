@@ -192,11 +192,8 @@ let currentTime = 0;
 let finalTime = 0;
 let gameEnded = false;
 
-// High score
-let bestTime = null;
-if (bestTime === null || finalTime < bestTime) {
-  bestTime = finalTime;
-}
+// game result for end screen
+let gameResult = "";
 
 // Freeze / blur status effect
 let freezeEffect = {

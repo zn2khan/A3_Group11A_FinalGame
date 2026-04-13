@@ -122,8 +122,6 @@ function draw() {
 
   if (!gameEnded && scene === SCENES.GAME && gameStartTime !== 0) {
     currentTime = (millis() - gameStartTime) / 1000;
-  } else if (gameStartTime === 0) {
-    currentTime = 0;
   }
 }
 
