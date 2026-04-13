@@ -4,6 +4,7 @@ function drawHUD() {
   textSize(12);
   textAlign(LEFT, TOP);
   textFont("monospace");
+
   text(
     "Collect the key and reach the door to escape. Avoid walls, gas, and monsters.",
     10,
@@ -14,7 +15,12 @@ function drawHUD() {
   text("Time: " + currentTime.toFixed(2) + "s", 10, 58);
 
   if (isPlayerImmune()) {
-    text("Immune: " + getImmuneTimeLeftSeconds().toFixed(1) + "s", 10, 74);
+    textAlign(RIGHT, TOP);
+    text(
+      "Immune: " + getImmuneTimeLeftSeconds().toFixed(1) + "s",
+      width - 12,
+      69
+    );
   }
 }
 
@@ -44,34 +50,6 @@ function drawHealthBar() {
   noStroke();
   textSize(12);
   textFont("monospace");
-  text("Health", x, y + heartH + 8);
-}
-
-/************************************************************
- * 22) HEALTH BAR
- ************************************************************/
-function drawHealthBar() {
-  const heartW = 36;
-  const heartH = 30;
-  const spacing = 8;
-
-  const totalWidth = maxHealth * heartW + (maxHealth - 1) * spacing;
-  const x = width - totalWidth - 12;
-  const y = 8;
-
-  for (let i = 0; i < maxHealth; i++) {
-    const heartX = x + i * (heartW + spacing);
-
-    if (i < health) {
-      image(fullHeartImg, heartX, y, heartW, heartH);
-    } else {
-      image(emptyHeartImg, heartX, y, heartW, heartH);
-    }
-  }
-
-  fill(255);
-  noStroke();
-  textSize(12);
-  textFont("monospace");
+  textAlign(LEFT, TOP);
   text("Health", x, y + heartH + 8);
 }

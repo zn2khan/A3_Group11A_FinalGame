@@ -18,6 +18,14 @@ function preload() {
   sprites.idleRight = loadImage("assets/images/idle_animation_R.png");
   sprites.freeze = loadImage("assets/images/damage_animation.png");
 
+  // Immune / mask player animations
+  sprites.downRunMask = loadImage("assets/images/down_run_mask_animation.png");
+  sprites.leftRunMask = loadImage("assets/images/left_run_animation_mask.png");
+  sprites.rightRunMask = loadImage("assets/images/right_run_animation_mask.png");
+  sprites.idleDownMask = loadImage("assets/images/idle_mask_animation.png");
+  sprites.idleLeftMask = loadImage("assets/images/idle_animation_L_mask.png");
+  sprites.idleRightMask = loadImage("assets/images/idle_animation_R_mask.png");
+
   // Screen / environment images
   startBg = loadImage("assets/images/GBDA302_Background.png");
   gameBg = loadImage("assets/images/background.png");

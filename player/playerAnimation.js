@@ -48,11 +48,13 @@ function getCurrentAnimation() {
     };
   }
 
+  const immune = isPlayerImmune();
+
   if (player.moving) {
     if (player.direction === "down") {
       return {
-        name: "down_run",
-        sheet: sprites.downRun,
+        name: immune ? "down_run_mask" : "down_run",
+        sheet: immune && sprites.downRunMask ? sprites.downRunMask : sprites.downRun,
         frames: 8,
         frameW: 18,
         frameH: 29,
@@ -60,9 +62,10 @@ function getCurrentAnimation() {
         loop: true,
       };
     }
+
     if (player.direction === "up") {
       return {
-        name: "up_run",
+        name: immune ? "up_run_mask" : "up_run",
         sheet: sprites.upRun,
         frames: 8,
         frameW: 18,
@@ -71,10 +74,11 @@ function getCurrentAnimation() {
         loop: true,
       };
     }
+
     if (player.direction === "left") {
       return {
-        name: "left_run",
-        sheet: sprites.leftRun,
+        name: immune ? "left_run_mask" : "left_run",
+        sheet: immune && sprites.leftRunMask ? sprites.leftRunMask : sprites.leftRun,
         frames: 8,
         frameW: 18,
         frameH: 29,
@@ -82,10 +86,11 @@ function getCurrentAnimation() {
         loop: true,
       };
     }
+
     if (player.direction === "right") {
       return {
-        name: "right_run",
-        sheet: sprites.rightRun,
+        name: immune ? "right_run_mask" : "right_run",
+        sheet: immune && sprites.rightRunMask ? sprites.rightRunMask : sprites.rightRun,
         frames: 8,
         frameW: 18,
         frameH: 29,
@@ -96,8 +101,8 @@ function getCurrentAnimation() {
   } else {
     if (player.direction === "down") {
       return {
-        name: "down_idle",
-        sheet: sprites.idleDown,
+        name: immune ? "down_idle_mask" : "down_idle",
+        sheet: immune && sprites.idleDownMask ? sprites.idleDownMask : sprites.idleDown,
         frames: 7,
         frameW: 18,
         frameH: 29,
@@ -105,9 +110,10 @@ function getCurrentAnimation() {
         loop: true,
       };
     }
+
     if (player.direction === "up") {
       return {
-        name: "up_idle",
+        name: immune ? "up_idle_mask" : "up_idle",
         sheet: sprites.idleUp,
         frames: 7,
         frameW: 18,
@@ -116,10 +122,11 @@ function getCurrentAnimation() {
         loop: true,
       };
     }
+
     if (player.direction === "left") {
       return {
-        name: "left_idle",
-        sheet: sprites.idleLeft,
+        name: immune ? "left_idle_mask" : "left_idle",
+        sheet: immune && sprites.idleLeftMask ? sprites.idleLeftMask : sprites.idleLeft,
         frames: 2,
         frameW: 18,
         frameH: 29,
@@ -127,10 +134,11 @@ function getCurrentAnimation() {
         loop: true,
       };
     }
+
     if (player.direction === "right") {
       return {
-        name: "right_idle",
-        sheet: sprites.idleRight,
+        name: immune ? "right_idle_mask" : "right_idle",
+        sheet: immune && sprites.idleRightMask ? sprites.idleRightMask : sprites.idleRight,
         frames: 2,
         frameW: 18,
         frameH: 29,
@@ -141,8 +149,8 @@ function getCurrentAnimation() {
   }
 
   return {
-    name: "down_idle",
-    sheet: sprites.idleDown,
+    name: immune ? "down_idle_mask" : "down_idle",
+    sheet: immune && sprites.idleDownMask ? sprites.idleDownMask : sprites.idleDown,
     frames: 7,
     frameW: 18,
     frameH: 29,
