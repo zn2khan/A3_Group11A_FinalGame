@@ -237,8 +237,9 @@ function drawWallVentNozzle(v) {
 
 function drawWallVentBurst(v) {
   const hit = getWallVentHitbox(v);
+  const activePipeBurstImg = getPipeBurstImageForCurrentLevel();
 
-  if (!pipeBurstImg) {
+  if (!activePipeBurstImg) {
     push();
     noStroke();
     fill(88, 104, 74);
@@ -257,7 +258,7 @@ function drawWallVentBurst(v) {
 
   if (v.side === "up") {
     image(
-      pipeBurstImg,
+      activePipeBurstImg,
       v.cx - hit.w / 2,
       hit.y,
       hit.w,
@@ -273,7 +274,7 @@ function drawWallVentBurst(v) {
     rotate(PI);
     imageMode(CENTER);
     image(
-      pipeBurstImg,
+      activePipeBurstImg,
       0,
       0,
       hit.w,
@@ -291,7 +292,7 @@ function drawWallVentBurst(v) {
     rotate(-HALF_PI);
     imageMode(CENTER);
     image(
-      pipeBurstImg,
+      activePipeBurstImg,
       0,
       0,
       hit.h,
@@ -309,7 +310,7 @@ function drawWallVentBurst(v) {
     rotate(HALF_PI);
     imageMode(CENTER);
     image(
-      pipeBurstImg,
+      activePipeBurstImg,
       0,
       0,
       hit.h,

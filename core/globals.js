@@ -50,6 +50,8 @@ let pipeBurstImg;
 // Level-specific images
 let pipeImgLvl2;
 let pipeImgLvl3;
+let pipeBurstImgLvl2;
+let pipeBurstImgLvl3;
 let monsterSheetLvl2;
 let monsterSheetLvl3;
 
@@ -219,6 +221,12 @@ function getPipeImageForCurrentLevel() {
   if (currentLevel === 2 && pipeImgLvl2) return pipeImgLvl2;
   if (currentLevel === 3 && pipeImgLvl3) return pipeImgLvl3;
   return pipeImg;
+}
+
+function getPipeBurstImageForCurrentLevel() {
+  if (currentLevel === 2 && pipeBurstImgLvl2) return pipeBurstImgLvl2;
+  if (currentLevel === 3 && pipeBurstImgLvl3) return pipeBurstImgLvl3;
+  return pipeBurstImg;
 }
 
 function getMonsterSheetForCurrentLevel() {

@@ -31,6 +31,8 @@ function preload() {
   doorImg = loadImage("assets/images/door.png");
   burstPipeSheet = loadImage("assets/images/pipes-bursting-spritesheet.png");
   pipeBurstImg = loadImage("assets/images/pipe_burst.png");
+  pipeBurstImgLvl2 = loadImage("assets/images/pipe_burst_lvl2.png");
+  pipeBurstImgLvl3 = loadImage("assets/images/pipe_burst_lvl3.png");
   keySheet = loadImage("assets/images/key_spritesheet.png");
 
   // Gas currently unused
