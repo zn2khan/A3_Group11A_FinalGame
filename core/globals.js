@@ -18,7 +18,8 @@ let damageTextTimer = 0;
 let endSoundType = "";
 
 let lastMonsterSoundTime = -9999;
-
+let monsterSoundTimeout = null;
+const MONSTER_SOUND_TIMEOUT_MS = 4000;
 // World settings
 const VIEW_W = 800;
 const VIEW_H = 500;
@@ -72,6 +73,17 @@ let sndStartSound;
 let sndSteam;
 let sndVictory;
 let sndWaterDrip;
+
+// New level / ending sounds
+let sndLevel1Music;
+let sndLevel2Music;
+let sndLevel3Music;
+let sndGameOverNew;
+let sndVictoryNew;
+
+// Audio state
+let currentGameplayTrack = null;
+let lastAudioLevel = -1;
 
 // Cutscene settings
 let cutsceneDuration = 6200;

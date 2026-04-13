@@ -95,8 +95,7 @@ function checkMonsterCollisions() {
           getAudioContext().state === "running" &&
           now - lastMonsterSoundTime > 350
         ) {
-          sndMonsterSound.setVolume(0.6);
-          sndMonsterSound.play();
+          playMonsterCollisionSound();
           lastMonsterSoundTime = now;
         }
 

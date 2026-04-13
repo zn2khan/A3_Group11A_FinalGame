@@ -33,7 +33,7 @@ function preload() {
   pipeBurstImg = loadImage("assets/images/pipe_burst.png");
   keySheet = loadImage("assets/images/key_spritesheet.png");
 
-  // Placeholder gas gif path
+  // Gas currently unused
   gasGif = null;
 
   // Enemy + cutscene
@@ -42,7 +42,7 @@ function preload() {
   monsterSheetLvl3 = loadImage("assets/images/monsterlvl2.png");
   cutsceneGif = loadImage("assets/images/cutscene.gif");
 
-  // Audio
+  // Existing audio
   sndBackground = loadSound("assets/music/background.mp3");
   sndBubbling = loadSound("assets/music/bubbling.mp3");
   sndCoin = loadSound("assets/music/coin.mp3");
@@ -57,6 +57,13 @@ function preload() {
   sndSteam = loadSound("assets/music/steam.mp3");
   sndVictory = loadSound("assets/music/victory.mp3");
   sndWaterDrip = loadSound("assets/music/waterDrip.mp3");
+
+  // New level-specific and ending audio
+  sndLevel1Music = loadSound("assets/music/level1_music.mp3");
+  sndLevel2Music = loadSound("assets/music/level2_music.mp3");
+  sndLevel3Music = loadSound("assets/music/level3_music.mp3");
+  sndGameOverNew = loadSound("assets/music/game_over_new.mp3");
+  sndVictoryNew = loadSound("assets/music/victory_new.mp3");
 }
 
 /************************************************************
