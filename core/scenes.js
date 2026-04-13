@@ -51,7 +51,7 @@ function drawInstructions() {
     "- Use WASD or Arrow Keys to move\n" +
       "- Character only moves up, down, left, or right\n",
     40,
-    110,
+    110
   );
 
   fill(0, 255, 0);
@@ -63,7 +63,7 @@ function drawInstructions() {
     "- Avoid walls (they're chemical hazards)\n" +
       "- Avoid monsters in the maze\n",
     40,
-    200,
+    200
   );
 
   fill(0, 255, 0);
@@ -76,7 +76,7 @@ function drawInstructions() {
       "Press B to go back to the Start Screen\n" +
       "Press G to return to the game",
     40,
-    290,
+    290
   );
 }
 
@@ -126,16 +126,11 @@ function drawCutscene() {
  * 8) END SCREEN
  ************************************************************/
 function drawEnd() {
-  background(0);
-  noStroke();
-  fill(255);
-  textAlign(CENTER, CENTER);
-  textFont("monospace");
-
-  textSize(26);
-  text(endMessage, width / 2, height / 2 - 20);
-
-  textSize(15);
-  text("Press R to restart", width / 2, height / 2 + 20);
-  text("Press B for Start Screen", width / 2, height / 2 + 45);
+  if (endSoundType === "win" && winBg) {
+    image(winBg, 0, 0, width, height);
+  } else if (endSoundType === "lose" && looseBg) {
+    image(looseBg, 0, 0, width, height);
+  } else {
+    background(0);
+  }
 }

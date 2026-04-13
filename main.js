@@ -21,7 +21,9 @@ function preload() {
   // Immune / mask player animations
   sprites.downRunMask = loadImage("assets/images/down_run_mask_animation.png");
   sprites.leftRunMask = loadImage("assets/images/left_run_animation_mask.png");
-  sprites.rightRunMask = loadImage("assets/images/right_run_animation_mask.png");
+  sprites.rightRunMask = loadImage(
+    "assets/images/right_run_animation_mask.png"
+  );
   sprites.idleDownMask = loadImage("assets/images/idle_mask_animation.png");
   sprites.idleLeftMask = loadImage("assets/images/idle_animation_L_mask.png");
   sprites.idleRightMask = loadImage("assets/images/idle_animation_R_mask.png");
@@ -43,6 +45,9 @@ function preload() {
   pipeBurstImgLvl3 = loadImage("assets/images/pipe_burst_lvl3.png");
   keySheet = loadImage("assets/images/key_spritesheet.png");
   maskSheet = loadImage("assets/images/mask_spritesheet.png");
+
+  winBg = loadImage("assets/images/winner screen.png");
+  looseBg = loadImage("assets/images/game over screen.png");
 
   // Gas currently unused
   gasGif = null;

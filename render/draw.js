@@ -222,3 +222,28 @@ function drawPixelBox(x, y, w, h) {
   fill(35, 55, 35, 240);
   rect(x + 6, y + 6, w - 12, h - 12);
 }
+
+/************************************************************
+ * 20) triggering game over and victory screen
+ ************************************************************/
+function triggerGameOver() {
+  gameEnded = true;
+  finalTime = currentTime;
+  endSoundType = "lose";
+  endMessage = "GAME OVER";
+
+  scene = SCENES.END;
+}
+
+function triggerVictory() {
+  gameEnded = true;
+  finalTime = currentTime;
+  endSoundType = "win";
+  endMessage = "YOU ESCAPED!";
+
+  if (bestTime === null || finalTime < bestTime) {
+    bestTime = finalTime;
+  }
+
+  scene = SCENES.END;
+}

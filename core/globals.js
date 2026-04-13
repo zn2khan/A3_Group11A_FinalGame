@@ -48,6 +48,8 @@ let keySheet;
 let burstPipeSheet;
 let pipeBurstImg;
 let maskSheet;
+let winBg;
+let looseBg;
 
 // Level-specific images
 let pipeImgLvl2;
