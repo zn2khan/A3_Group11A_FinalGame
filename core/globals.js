@@ -21,8 +21,8 @@ let lastMonsterSoundTime = -9999;
 let monsterSoundTimeout = null;
 const MONSTER_SOUND_TIMEOUT_MS = 4000;
 // World settings
-const VIEW_W = 800;
-const VIEW_H = 500;
+let VIEW_W;
+let VIEW_H;
 const WORLD_W = 1600;
 const WORLD_H = 1000;
 
@@ -106,7 +106,7 @@ let player = {
   x: 120,
   y: 120,
   r: 14,
-  speed: 3,
+  speed: 5,
 
   w: 18,
   h: 29,
