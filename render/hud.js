@@ -6,7 +6,7 @@ function drawHUD() {
   textFont("monospace");
 
   text(
-    "Collect the key and reach the door to escape. Avoid walls, gas, and monsters.",
+    "Collect the key and reach the door to escape. Avoid walls, gas, and monsters. Collect mask for 10 seconds of immunity ",
     10,
     10,
   );
@@ -19,7 +19,7 @@ function drawHUD() {
     text(
       "Immune: " + getImmuneTimeLeftSeconds().toFixed(1) + "s",
       width - 12,
-      69
+      69,
     );
   }
 }
