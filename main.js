@@ -139,15 +139,13 @@ function keyPressed() {
     if (key === "g" || key === "G") scene = SCENES.GAME;
   } else if (scene === SCENES.CUTSCENE) {
     if (key === " " || keyCode === 32) {
-      if (gameStartTime === 0) {
-        gameStartTime = millis();
-      }
+      gameStartTime = millis();
       scene = SCENES.GAME;
     }
   } else if (scene === SCENES.GAME) {
     if (key === "i" || key === "I") scene = SCENES.INSTRUCTIONS;
   } else if (scene === SCENES.END) {
-    if (key === "r" || key === "R") restartGame();
-    if (key === "b" || key === "B") scene = SCENES.START;
+    if (key === "r" || key === "R") {scene = SCENES.GAME; restartGame();}
+    if (key === "b" || key === "B") {scene = SCENES.START; restartGame();}
   }
 }

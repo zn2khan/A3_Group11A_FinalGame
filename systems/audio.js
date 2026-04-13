@@ -270,6 +270,9 @@ function loadCurrentLevel() {
   damageText = "";
   damageTextTimer = 0;
 
+  immuneUntil = 0;
+  freezeEffect.active = false;
+
   buildMaze();
   buildGasHazards();
   buildKeys();
@@ -294,8 +297,12 @@ function restartGame() {
   lastMonsterSoundTime = -9999;
   lastAudioLevel = -1;
 
+  freezeEffect.active = false;
+  immuneUntil = 0;
+
+  gameEnded = false;
+  gameStartTime = millis();
   loadCurrentLevel();
-  scene = SCENES.GAME;
 
   playLevelMusicForCurrentLevel();
 

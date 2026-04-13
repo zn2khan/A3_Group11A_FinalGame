@@ -51,7 +51,7 @@ function drawInstructions() {
     "- Use WASD or Arrow Keys to move\n" +
       "- Character only moves up, down, left, or right\n",
     40,
-    110,
+    110
   );
 
   fill(0, 255, 0);
@@ -64,7 +64,7 @@ function drawInstructions() {
       "- Avoid monsters in the maze\n",
 
     40,
-    200,
+    200
   );
 
   fill(0, 255, 0);
@@ -77,7 +77,7 @@ function drawInstructions() {
       "Press B to go back to the Start Screen\n" +
       "Press G to return to the game",
     40,
-    290,
+    290
   );
 }
 
@@ -143,5 +143,5 @@ function drawEnd() {
   textFont("monospace");
 
   textSize(28);
-  text("Time: " + formatTime(finalTime), width / 2, height / 2);
+  text("Time: " + finalTime.toFixed(2) + "s", width / 2, height / 2);
 }
